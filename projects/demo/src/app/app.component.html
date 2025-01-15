@@ -1,0 +1,15 @@
+<button (click)="isLoading.set(!isLoading())">Toggle loading</button>
+<div
+  style="background-color: azure; width: 320px; margin: 1rem;"
+  [ngxIsLoading]="isLoading()"
+>
+  <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    Illo corporis quam minus id illum dolore non! Possimus
+    est provident pariatur quam tempora dignissimos ab consectetur
+    nostrum, quas expedita earum enim.
+  </p>
+  <div>
+    <button (click)="isLoading.set(!isLoading())">Toggle loading</button>
+  </div>
+</div>

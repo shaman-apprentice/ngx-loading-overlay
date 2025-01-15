@@ -1,0 +1,22 @@
+{
+  "name": "@shaman-apprentice/ngx-loading-overlay",
+  "version": "1.0.0",
+  "author": "shaman-apprentice",
+  "private": false,
+  "license": "MIT",
+  "description": "An Angular directive adding a toggleable loading overlay",
+  "keywords": ["Angular", "loading overlay"],
+  "homepage": "https://github.com/shaman-apprentice/ngx-loading-overlay",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaman-apprentice/ngx-loading-overlay.git"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=19.0.0",
+    "@angular/core": ">=19.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "sideEffects": false
+}
