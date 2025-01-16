@@ -2,7 +2,7 @@
 
 An Angular directive adding a loading overlay to your HTML.
 
-![example image](https://raw.githubusercontent.com/shaman-apprentice/ngx-loading-overlay/refs/tags/v1.0.0/docs/example.png)
+![example image](https://raw.githubusercontent.com/shaman-apprentice/ngx-loading-overlay/refs/tags/v1.0.0/projects/ngx-loading-overlay/docs/example.png)
 
 See [demo app](https://github.com/shaman-apprentice/ngx-loading-overlay/tree/main/projects/demo/src/app) for full example.
 

@@ -7,8 +7,7 @@
     "build": "ng build @shaman-apprentice/ngx-loading-overlay",
     "watch": "ng build @shaman-apprentice/ngx-loading-overlay --watch --configuration development",
     "test": "echo \"No tests\"",
-    "prepare": "npm run build",
-    "publish": "npm publish ./dist/ngx-loading-overlay --access=public"
+    "publishLib": "npm run build && npm publish ./dist/ngx-loading-overlay --access=public"
   },
   "private": false,
   "dependencies": {
