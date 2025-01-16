@@ -2,8 +2,9 @@
 
 An Angular directive adding a loading overlay to your HTML.
 
-TODO
-![example image](https://raw.githubusercontent.com/shaman-apprentice/ngx-loading-overlay/refs/tags/v0.1.0/docs/demo.excalidraw.png)
+![example image](https://raw.githubusercontent.com/shaman-apprentice/ngx-loading-overlay/refs/tags/v1.0.0/docs/example.png)
+
+See [demo app](https://github.com/shaman-apprentice/ngx-loading-overlay/tree/main/projects/demo/src/app) for full example.
 
 ## How to use
 
@@ -11,17 +12,20 @@ TODO
 npm install @shaman-apprentice/ngx-loading-overlay
 ```
 
-See [demo app](https://github.com/shaman-apprentice/ngx-loading-overlay/tree/main/projects/demo/src/app) for full example.
-
 ```ts
 // app.config.ts
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideNgxLoadingOverlay } from '@shaman-apprentice/ngx-loading-overlay';
 import { LoadingOverlayComponent } from './components/loadingOverlay.component';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
+    // Note, that `LoadingOverlayComponent` must adhere to
+    // type NgxLoadingOverlay = { 
+    //   elemRef: ElementRef<HTMLElement>;
+    //   onActivate?: () => void;
+    //   onDeactivate?: () => void;
+    // }
     provideNgxLoadingOverlay(LoadingOverlayComponent),
   ],
 };

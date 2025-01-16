@@ -49,9 +49,7 @@
                 "input": "projects/demo/public"
               }
             ],
-            "styles": [
-              "projects/demo/src/styles.css"
-            ],
+            "styles": [],
             "scripts": []
           },
           "configurations": {

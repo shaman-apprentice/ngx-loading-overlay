@@ -3,10 +3,15 @@ import { NgxLoadingOverlay, NgxLoadingOverlayToken } from "./loadingOverlay.toke
 
 @Directive({
   selector: "[ngxIsLoading]",
-  standalone: true,
 })
 export class IsLoadingDirective {
   ngxIsLoading = input.required<boolean>();
+  /**
+   * If true, which is default, it will set `inert` attribute on applied HTMLElement.
+   * This prevents interacting with anything under the loading screen,
+   * like tabbing and pressing buttons.
+   */
+  ngxSetInertWhenLoading = input(true);
 
   private elemRef: ElementRef<HTMLElement> = inject(ElementRef);
   private viewContainerRef = inject(ViewContainerRef);
@@ -26,25 +31,32 @@ export class IsLoadingDirective {
 
     effect(() => {
       const isLoading = this.ngxIsLoading();
+      const setInertWhenLoading = this.ngxSetInertWhenLoading(); 
 
       if (!isLoading) {
         if (this.loadingOverlayRef === undefined)
           return;
 
-        this.getLoadingOverlayHtmlElem().style.display = "none";
+        this.getLoadingOverlay().style.display = "none";
+        this.elemRef.nativeElement.removeAttribute("inert");
 
+        this.loadingOverlayRef.instance.onDeactivate?.();
       } else {
-        this.getLoadingOverlayHtmlElem().style.removeProperty("display");
+        this.getLoadingOverlay().style.removeProperty("display");
+        if (setInertWhenLoading)
+          this.elemRef.nativeElement.setAttribute("inert", "");
+
+        this.loadingOverlayRef!.instance.onActivate?.();
       }
     });
   }
 
-  private getLoadingOverlayHtmlElem(): HTMLElement {
+  private getLoadingOverlay(): HTMLElement {
     if (this.loadingOverlayRef === undefined) {
       this.loadingOverlayRef = this.viewContainerRef.createComponent(this.LoadingOverlay);
-      this.elemRef.nativeElement.appendChild(this.getLoadingOverlayHtmlElem());
-      this.getLoadingOverlayHtmlElem().style.position = "absolute";
-      this.getLoadingOverlayHtmlElem().style.inset = "0";
+      this.elemRef.nativeElement.appendChild(this.loadingOverlayRef.instance.elemRef.nativeElement);
+      this.getLoadingOverlay().style.position = "absolute";
+      this.getLoadingOverlay().style.inset = "0";
     }
 
     return this.loadingOverlayRef.instance.elemRef.nativeElement;
