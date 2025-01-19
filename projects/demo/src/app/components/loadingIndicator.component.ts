@@ -1,15 +1,10 @@
 import { ChangeDetectionStrategy, Component, ElementRef, inject, ViewEncapsulation } from "@angular/core";
 
 @Component({
-  selector: "app-loading-overlay",
+  selector: "app-loading-indicator",
   template: `<div class="loader"></div>`,
   styles: `
-    app-loading-overlay {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(0, 0, 0, 0.33);
-
+    app-loading-indicator {
       .loader {
         width: 48px;
         height: 48px;
@@ -34,6 +29,6 @@ import { ChangeDetectionStrategy, Component, ElementRef, inject, ViewEncapsulati
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoadingOverlayComponent {
+export class LoadingIndicatorComponent {
   elemRef = inject(ElementRef);
 }

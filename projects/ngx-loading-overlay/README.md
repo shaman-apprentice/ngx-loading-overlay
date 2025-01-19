@@ -15,18 +15,18 @@ npm install @shaman-apprentice/ngx-loading-overlay
 ```ts
 // app.config.ts
 import { ApplicationConfig } from '@angular/core';
-import { provideNgxLoadingOverlay } from '@shaman-apprentice/ngx-loading-overlay';
-import { LoadingOverlayComponent } from './components/loadingOverlay.component';
+import { provideNgxLoadingIndicator } from '@shaman-apprentice/ngx-loading-overlay';
+import { LoadingIndicatorComponent } from './components/loadingIndicator.component';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // Note, that `LoadingOverlayComponent` must adhere to
+    // Note, that `LoadingIndicatorComponent` must adhere to
     // type NgxLoadingOverlay = { 
     //   elemRef: ElementRef<HTMLElement>;
     //   onActivate?: () => void;
     //   onDeactivate?: () => void;
     // }
-    provideNgxLoadingOverlay(LoadingOverlayComponent),
+    provideNgxLoadingIndicator(LoadingIndicatorComponent),
   ],
 };
 ``` 
