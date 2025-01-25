@@ -1,5 +1,5 @@
 import { afterNextRender, ComponentRef, DestroyRef, Directive, effect, ElementRef, inject, input, ViewContainerRef } from "@angular/core";
-import { NgxLoadingIndicator, NgxLoadingIndicatorToken } from "./loadingIndicator.token";
+import { INgxLoadingIndicator, NgxLoadingIndicatorToken } from "./loadingIndicator.token";
 import { positionLoadingElems } from "./position.helper";
 
 @Directive({
@@ -14,7 +14,7 @@ export class IsLoadingDirective {
   private destroyRef = inject(DestroyRef);
   private LoadingIndicatorComponent = inject(NgxLoadingIndicatorToken);
   
-  private _loadingIndicatorRef?: ComponentRef<NgxLoadingIndicator>;
+  private _loadingIndicatorRef?: ComponentRef<INgxLoadingIndicator>;
   private _loadingOverlayElem?: HTMLElement;
   private resizeObserver = new ResizeObserver(() => {
     positionLoadingElems(this.elemRef.nativeElement, this.loadingOverlayElem, this.loadingIndicatorElem);
@@ -65,7 +65,7 @@ export class IsLoadingDirective {
     this.loadingIndicatorRef.instance.onDeactivate?.();
   }
 
-  private get loadingIndicatorRef(): ComponentRef<NgxLoadingIndicator>  {
+  private get loadingIndicatorRef(): ComponentRef<INgxLoadingIndicator>  {
     if (this._loadingIndicatorRef === undefined)
       this._loadingIndicatorRef = this.insertLoadingIndicatorCompRef();
 
@@ -73,7 +73,7 @@ export class IsLoadingDirective {
   }
 
   private get loadingIndicatorElem(): HTMLElement {
-    return this.loadingIndicatorRef.instance.elemRef.nativeElement;
+    return this.loadingIndicatorRef.location.nativeElement;
   }
 
   private get loadingOverlayElem(): HTMLElement {
@@ -94,10 +94,10 @@ export class IsLoadingDirective {
     return overlay;
   }
   
-  private insertLoadingIndicatorCompRef():  ComponentRef<NgxLoadingIndicator> {
+  private insertLoadingIndicatorCompRef():  ComponentRef<INgxLoadingIndicator> {
     const loadingIndicatorRef = this.viewContainerRef.createComponent(this.LoadingIndicatorComponent);
 
-    const elem = loadingIndicatorRef.instance.elemRef.nativeElement;
+    const elem = loadingIndicatorRef.location.nativeElement;
     elem.style.position = "absolute";
     elem.style.transform = "translate(-50%, -50%)";
     this.elemRef.nativeElement.appendChild(elem);

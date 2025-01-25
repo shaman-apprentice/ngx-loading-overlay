@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, inject, ViewEncapsulation } from "@angular/core";
+import { INgxLoadingIndicator } from "@shaman-apprentice/ngx-loading-overlay";
 
 @Component({
   selector: "app-loading-indicator",
@@ -29,6 +30,12 @@ import { ChangeDetectionStrategy, Component, ElementRef, inject, ViewEncapsulati
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoadingIndicatorComponent {
-  elemRef = inject(ElementRef);
+export class LoadingIndicatorComponent implements INgxLoadingIndicator {
+  onActivate() {
+    console.log("hi from loading activated");
+  }
+
+  onDeactivate() {
+    console.log("hi from loading deactivated");
+  }
 }

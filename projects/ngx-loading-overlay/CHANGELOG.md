@@ -4,9 +4,12 @@ This changelog is roughly based on [Keep a Changelog](http://keepachangelog.com/
 
 ## [unreleased] (Breaking 🐱 | Feat 🚀 | Fixed 🐞)
 
+## [2.1.0] 2025-01-25
+
 ### Feat 🚀
 
 - Resize loading overlay in case its container resizes while loading.
+- Remove need to provide `elemRef: ElementRef<HTMLElement>` to loading indicator.
 
 ## [2.0.0] 2025-01-19
 
