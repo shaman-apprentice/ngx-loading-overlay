@@ -1,5 +1,6 @@
 import { afterNextRender, ComponentRef, DestroyRef, Directive, effect, ElementRef, inject, input, ViewContainerRef } from "@angular/core";
 import { NgxLoadingIndicator, NgxLoadingIndicatorToken } from "./loadingIndicator.token";
+import { positionLoadingElems } from "./position.helper";
 
 @Directive({
   selector: "[ngxIsLoading]",
@@ -15,6 +16,9 @@ export class IsLoadingDirective {
   
   private _loadingIndicatorRef?: ComponentRef<NgxLoadingIndicator>;
   private _loadingOverlayElem?: HTMLElement;
+  private resizeObserver = new ResizeObserver(() => {
+    positionLoadingElems(this.elemRef.nativeElement, this.loadingOverlayElem, this.loadingIndicatorElem);
+  });
 
   constructor() {
     this.destroyRef.onDestroy(() => {
@@ -37,16 +41,10 @@ export class IsLoadingDirective {
     this.elemRef.nativeElement.style.overflow = "hidden";
 
     this.loadingOverlayElem.style.removeProperty("display");
-    this.loadingOverlayElem.style.height = this.elemRef.nativeElement.clientHeight + "px";
-    this.loadingOverlayElem.style.top = this.elemRef.nativeElement.scrollTop + "px";
-    this.loadingOverlayElem.style.width = this.elemRef.nativeElement.clientWidth + "px";
-    this.loadingOverlayElem.style.left = this.elemRef.nativeElement.scrollLeft + "px";
-
     this.loadingIndicatorElem.style.removeProperty("display");
-    const centeredTop = this.elemRef.nativeElement.clientHeight / 2 + this.elemRef.nativeElement.scrollTop;
-    const centeredLeft = this.elemRef.nativeElement.clientWidth / 2 + this.elemRef.nativeElement.scrollLeft;
-    this.loadingIndicatorElem.style.top = `${centeredTop}px`;
-    this.loadingIndicatorElem.style.left = `${centeredLeft}px`;
+    positionLoadingElems(this.elemRef.nativeElement, this.loadingOverlayElem, this.loadingIndicatorElem);
+
+    this.resizeObserver.observe(this.elemRef.nativeElement);
 
     this.loadingIndicatorRef.instance.onActivate?.();
   }
@@ -61,6 +59,8 @@ export class IsLoadingDirective {
 
     this.loadingIndicatorElem.style.display = "none";
     this.loadingOverlayElem.style.display = "none";
+
+    this.resizeObserver.disconnect();
 
     this.loadingIndicatorRef.instance.onDeactivate?.();
   }
