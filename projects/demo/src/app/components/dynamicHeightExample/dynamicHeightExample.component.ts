@@ -16,7 +16,7 @@ nostrum, quas expedita earum enim.`;
   ],
 })
 export class DynamicHeightExampleComponent implements OnInit, OnDestroy {
-  isLoading = model.required<boolean>();
+  isLoading = signal(false);
 
   protected dynamicContent = signal(lorem);
 

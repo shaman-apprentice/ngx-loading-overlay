@@ -1,17 +1,17 @@
-import { ChangeDetectionStrategy, Component, signal, ViewEncapsulation } from '@angular/core';
-import { IsLoadingDirective } from "@shaman-apprentice/ngx-loading-overlay";
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { DynamicHeightExampleComponent } from './components/dynamicHeightExample/dynamicHeightExample.component';
+import { BasicExampleComponent } from './components/basicExample/basicExample.component';
+import { WithScrollExampleComponent } from './components/withScrollExample/withScrollExample.component';
 
 @Component({
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    IsLoadingDirective,
+    BasicExampleComponent,
+    WithScrollExampleComponent,
     DynamicHeightExampleComponent,
   ],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  protected isLoading = signal(false);
-}
+export class AppComponent { }
