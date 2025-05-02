@@ -20,9 +20,8 @@ import { LoadingIndicatorComponent } from './components/loadingIndicator.compone
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // Note, that `LoadingIndicatorComponent` must adhere to
+    // Note, that `LoadingIndicatorComponent` adheres to
     // type NgxLoadingOverlay = { 
-    //   elemRef: ElementRef<HTMLElement>;
     //   onActivate?: () => void;
     //   onDeactivate?: () => void;
     // }
