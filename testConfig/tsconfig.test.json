@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "./out-tsc/test",
     "isolatedModules": false,
-    "types": ["jest"]
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["src/**/*.test.ts", "src/**/*.d.ts"]
 }
