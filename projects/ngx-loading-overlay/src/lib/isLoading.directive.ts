@@ -56,6 +56,8 @@ export class IsLoadingDirective {
     this.elemRef.nativeElement.removeAttribute("inert");
     if (this.elemRefOriginOverflowProp)
       this.elemRef.nativeElement.style.overflow = this.elemRefOriginOverflowProp;
+    else 
+      this.elemRef.nativeElement.style.removeProperty("overflow");
 
     this.loadingIndicatorElem.style.display = "none";
     this.loadingOverlayElem.style.display = "none";

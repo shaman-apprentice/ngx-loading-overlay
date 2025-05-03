@@ -4,6 +4,10 @@ This changelog is roughly based on [Keep a Changelog](http://keepachangelog.com/
 
 ## [unreleased] (Breaking 🐱 | Feat 🚀 | Fixed 🐞)
 
+### Fixed 🐞
+
+- Remove `overflow: hidden` if container had originally no `overflow` property. (#2)
+
 ## [2.1.0] 2025-01-25
 
 ### Feat 🚀
