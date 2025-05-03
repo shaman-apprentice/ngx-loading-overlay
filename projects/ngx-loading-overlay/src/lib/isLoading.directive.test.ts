@@ -1,5 +1,5 @@
 import { Component, signal } from "@angular/core";
-import {render, screen, fireEvent} from "@testing-library/angular";
+import { render, screen, fireEvent } from "@testing-library/angular";
 import { IsLoadingDirective } from "./isLoading.directive";
 import { provideNgxLoadingIndicator } from "./loadingIndicator.token";
 
@@ -16,12 +16,11 @@ class LoadingIndicatorComponent {}
     <div data-testid="loading-container" [ngxIsLoading]="isLoading()">Container</div>
   `,
   imports: [ IsLoadingDirective ],
-  providers: [ provideNgxLoadingIndicator(LoadingIndicatorComponent), ]
+  providers: [ provideNgxLoadingIndicator(LoadingIndicatorComponent) ],
 })
 class TestComponent {
   isLoading = signal(false);
 }
-
 
 describe("isLoading.directive", () => {
   it("activates and deactivates the loading indicator", async () => {
@@ -45,9 +44,3 @@ describe("isLoading.directive", () => {
     expect(container).not.toHaveStyle("overflow: hidden;");
   });
 });
-
-
-
-// render(<div data-testid="my-div" style={{ overflow: "hidden" }} />);
-// const element = screen.getByTestId("my-div");
-// expect(element).toHaveStyle("overflow: hidden");
