@@ -4,11 +4,15 @@ This changelog is roughly based on [Keep a Changelog](http://keepachangelog.com/
 
 ## [unreleased] (Breaking 🐱 | Feat 🚀 | Fixed 🐞)
 
+## [3.0.0] 2025-07-18
+
+- Require Angular 20
+
 ## [2.1.1] 2025-05-03
 
 ### Fixed 🐞
 
-- Remove `overflow: hidden` if container had originally no `overflow` property. (#2)
+- Remove `overflow: hidden` if container had originally no `overflow` property.
 
 ## [2.1.0] 2025-01-25
 
