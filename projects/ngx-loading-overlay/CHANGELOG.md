@@ -4,6 +4,12 @@ This changelog is roughly based on [Keep a Changelog](http://keepachangelog.com/
 
 ## [unreleased] (Breaking 🐱 | Feat 🚀 | Fixed 🐞)
 
+## [2.2.0] 2025-07-30
+
+### Feat 🚀
+
+- Add `ng-update` integration.
+
 ## [2.1.1] 2025-05-03
 
 ### Fixed 🐞

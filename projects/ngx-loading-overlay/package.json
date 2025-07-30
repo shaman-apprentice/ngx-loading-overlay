@@ -1,6 +1,9 @@
 {
   "name": "@shaman-apprentice/ngx-loading-overlay",
-  "version": "2.1.1",
+  "version": "2.2.0",
+  "ng-update": {
+    "migrations": "./schematics/migration.json"
+  },
   "author": "shaman-apprentice",
   "private": false,
   "license": "MIT",
